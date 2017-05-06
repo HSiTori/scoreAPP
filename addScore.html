@@ -48,8 +48,7 @@
             <option value="Sunday">星期日</option>
           </optiondata>
           </select>  
-      <button type="button" class="btn btn-default" id="enter" onclick="addfriend();">Enter</button>
-      <button type="button" class="btn btn-default" id="list" onclick="showfriend();">跑出資料</button>
+      <button type="button" class="btn btn-default" id="enter" onclick="addscore();">Enter</button>
    </div>
 </div>
 </div>
@@ -75,7 +74,7 @@
 </div> 
  
 <script>
- 
+//新增分數 
  function addscore(){
  
   var  q1 = $("input#subject").val();
@@ -107,8 +106,9 @@
       $("p#alertresult").append("請輸入你的必填資料");
       $("#alert").modal();
      }
+ 
  }
-  
+ $("table").on("click","button#enter",addscore); 
    
  
  
