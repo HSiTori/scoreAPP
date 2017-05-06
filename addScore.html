@@ -35,12 +35,12 @@
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他(≧▽≦)<span class="caret"></span></a>
   <ul class="dropdown-menu">
-    <div class="col-xs-6"><a href="#">各科目成績</a></div>
-    <div class="col-xs-6"><a href="#">各曜日成績</a></div>
-    <div class="col-xs-6"><a href="#">最近一周成績</a></div>
-    <div class="col-xs-6"><a href="#">最新十筆成績</a></div>
-    <div class="col-xs-6"><a href="#">不及格列表</a></div>
-    <div class="col-xs-6"><a href="#" class="btn btn-ink disabled">敬請期待</a></div>
+    <div class="col-xs-6"><a href="#" class="line-height:30px">各科目成績</a></div>
+    <div class="col-xs-6"><a href="#" class="line-height:30px">各曜日成績</a></div>
+    <div class="col-xs-6"><a href="#" class="line-height:30px">最近一周成績</a></div>
+    <div class="col-xs-6"><a href="#" class="line-height:30px">最新十筆成績</a></div>
+    <div class="col-xs-6"><a href="#" class="line-height:30px">不及格列表</a></div>
+    <div class="col-xs-6"><a href="#" class="disabled">敬請期待</a></div>
   </ul>
     </li>
   </ul>
@@ -92,12 +92,14 @@
 </div>
   
 <!--提醒視窗-->
-<div id="alert" class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div id="alert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog modal-lg" role="document">
    <div class="modal-content">
      <div class="modal-header">
-       <h4>小提醒~~~</h4> 
-       <p id="alertresult"></p>
+       <h4 style="test-align:center;" >小提醒~~~</h4> 
+       <p id="alertresult">
+       </p>
+       <a href="mainScore.html" class="btn btn-link">前往主頁</a>
        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
      </div>
    </div> 
@@ -137,7 +139,7 @@
       scoreCollection.insert(newScore);
       scoreCollection.save();
       $("p#alertresult").text("");
-      $("p#alertresult").append();
+      $("p#alertresult").append("輸入成功!!");
       $("#alert").modal();
      }else{
       $("p#alertresult").text("");
