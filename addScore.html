@@ -19,32 +19,33 @@
        <div class="form-group">
           <label for="input">科目:</label>
           <input id="subject" type="text" class="form-control" style="width: 225px;" placeholder="Subject">
-          <small id="joke" class="form-text text-muted"></small>
+          <small id="joke" class="form-text text-muted text-danger">*必填</small>
        </div>
        <div class="form-group">
           <label for="input">分數:</label>
           <input id="score" type="text" class="form-control" style="width: 225px;" placeholder="Score">
-          <small id="joke" class="form-text text-muted"></small>
+          <small id="joke" class="form-text text-muted text-danger">*必填</small>
        </div>
        <div class="form-group">
           <label for="input">日期:</label>
-          <input id="date" type="text" class="form-control" style="width: 225px;" placeholder="date">
-          <small id="joke" class="form-text text-muted"></small>
-       </div>
-       <div class="form-group">
-          <label for="input">滿意度:</label>
-          <input id="satisfy" type="text" class="form-control" style="width: 225px;" placeholder="">
+          <input id="date" type="date" class="form-control" style="width: 225px;" placeholder="Date">
           <small id="joke" class="form-text text-muted"></small>
        </div>
        <div class="form-group">
           <label for="input">其他:</label>
-          <input id="other" type="text" class="form-control" style="width: 225px;" placeholder="other">
+          <input id="other" type="text" class="form-control" style="width: 225px;" placeholder="Other">
           <small id="joke" class="form-text text-muted"></small>
        </div>
           <select id="job-id">
           <optiondata>
-            <option value="">請選擇職業</option>
-            <option value="1beda312sd">學生</option> 
+            <option value="">請選擇...</option>
+            <option value="Monday">星期一</option> 
+            <option value="Tuesday">星期二</option>
+            <option value="Wednesday">星期三</option>
+            <option value="Thursday">星期四</option>
+            <option value="Friday">星期五</option>
+            <option value="Saturday">星期六</option>
+            <option value="Sunday">星期日</option>
           </optiondata>
           </select>  
       <button type="button" class="btn btn-default" id="enter" onclick="addfriend();">Enter</button>
@@ -53,7 +54,18 @@
 </div>
 </div>
   
-  
+<!--提醒視窗-->
+<div id="alert" class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h4>小提醒~~~</h4> 
+       <p id="alertresult"></p>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+     </div>
+   </div> 
+</div>
+</div> 
   
   
   
@@ -64,18 +76,40 @@
  
 <script>
  
- var newScore = {
-   
-   subject
+ function addscore(){
+ 
+  var  q1 = $("input#subject").val();
+    $("input#subject").val("");
+    var  q2 = $("input#score").val();
+    $("input#score").val("");
+    var  q3 = $("input#date").val();
+    $("input#date").val("");
+    var  q4 = $("input#other").val();
+    $("input#other").val("");
+    var  q5 = $("select:selected").val();
+  var newScore = {  
   
+   Subject: q1,
+   Score: q2,
+   Date: q3,
+   other: q4,
+   week: q5
  
- 
- 
- 
+  }
+  if(q1!=="" && q2!==""){
+      scoreCollection.insert(newScore);
+      scoreCollection.save();
+      $("p#alertresult").text("");
+      $("p#alertresult").append();
+      $("#alert").modal();
+     }else{
+      $("p#alertresult").text("");
+      $("p#alertresult").append("請輸入你的必填資料");
+      $("#alert").modal();
+     }
  }
- 
- 
- 
+  
+   
  
  
 </script> 
