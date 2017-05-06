@@ -10,14 +10,14 @@
 
 <!-- versionCode is optional and Android only -->
 
-  <name>SimpsonAccounter</name>
+  <name>Loli Score</name>
 
   <description>
-     Let Simpson help you save money!
+     Make little loli help you save money!
   </description>
 
-  <author href="https://build.phonegap.com" email="support@phonegap.com">
-      John Liu
+  <author href="https://build.phonegap.com" email="kmes9940723@gmail.com">
+      Annie Chu
   </author>
 
 </widget>
