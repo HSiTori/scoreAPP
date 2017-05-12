@@ -55,9 +55,7 @@
      <tr>
         <td>科目</td>
         <td>分數</td>
-        <td>日期</td>
-        <td>其他</td>
-        <td>及格</td>
+        <td>詳細</td>
         <td>操作</td>
      </tr>
     </thead>
@@ -72,7 +70,7 @@
    $("#scoretable tbody").text("");
    $("div#scorelist").show();
    for(var i=0;i<scoreCollection.find().length;i++){
-       var comment = "<tr>"+"<td>"+scoreCollection.find()[i].Subject+"</td>"+"<td>"+scoreCollection.find()[i].Score+"</td>"+"<td>"+scoreCollection.find()[i].Date+"</td>"+"<td>"+scoreCollection.find()[i].other+"</td>"+"<td>"+scoreCollection.find()[i].pass+"</td>"+"<td><input type='button' class='btn btn-info' id='changefirst' data-id='"+scoreCollection.find()[i]._id+"' data-toggle='modal' data-target='#changedata' onclick='changedata();' value='修改'>&nbsp<input type='button' class='btn btn-danger btn-xs"+i+"' onclick='deletefrienddetail("+i+");' value='刪除'></td></tr>";
+       var comment = "<tr>"+"<td>"+scoreCollection.find()[i].Subject+"</td>"+"<td>"+scoreCollection.find()[i].Score+"</td>"+"<td><a href='#' class='btn btn-link'>更多</a></td>"+"<td><input type='button' class='btn btn-info' id='changefirst' data-id='"+scoreCollection.find()[i]._id+"' data-toggle='modal' data-target='#changedata' onclick='changedata();' value='修改'>&nbsp<input type='button' class='btn btn-danger btn-xs"+i+"' onclick='deletefrienddetail("+i+");' value='刪除'></td></tr>";
        $("table#scoretable tbody").append(comment);
    };
  };
