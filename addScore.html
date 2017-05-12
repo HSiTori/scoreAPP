@@ -95,7 +95,7 @@
    <div class="modal-content">
      <div class="modal-header">
        <h4 style="text-align:center;" >小提醒~~~</h4> 
-       <p id='alertresult'>
+       <p id='alertresult'></p>
        <a href="mainScore.html" class="btn btn-info">前往主頁</a>
        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
      </div>
@@ -138,11 +138,11 @@
       scoreCollection.save();
       console.log(newScore);
       $("p#alertresult").text("");
-      $("p#alertresult").append("輸入成功!!");
+      $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
       $("#alert").modal();
      }else{
       $("p#alertresult").text("");
-      $("p#alertresult").append("請輸入你的必填資料");
+      $("p#alertresult").append("<b>"+"請輸入你的必填資料"+"</b>");
       $("#alert").modal();
      }
  
