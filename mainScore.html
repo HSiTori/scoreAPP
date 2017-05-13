@@ -78,9 +78,10 @@
      <div class="modal-header">
        <h4 style="text-align:center;" >詳細資料</h4> 
        <p id='alertresult'></p>
-       <a href="mainScore.html" class="btn btn-info">前往主頁</a>
+       <div>
        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
-     </div>
+       </div>
+     </div>  
    </div> 
 </div>
 </div> 
@@ -128,7 +129,7 @@ scoreCollection.load(function(){
         _id: id
       };
       $("p#alertresult").text("");
-      $("p#alertresult").append(JSON.stringify(scoreCollection.find(query)[0]));
+      $("p#alertresult").append("<p>科目:&nbsp"+scoreCollection.find(query)[0].Subject+"</p><br>");
       $("#alert").modal();
     };
 
