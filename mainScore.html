@@ -1,6 +1,7 @@
 <html>
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <meta charset="UTF-8">
  <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -99,7 +100,7 @@
    $("#scoretable tbody").text("");
    $("div#scorelist").show();
    for(var i=0;i<scoreCollection.find().length;i++){
-       var comment = "<tr>"+"<td>"+scoreCollection.find()[i].Subject+"</td>"+"<td>"+scoreCollection.find()[i].Score+"</td>"+"<td><input type='button' class='btn btn-link' id='button"+i+"' data-target='#details'>更多</td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changefirst' data-id='"+scoreCollection.find()[i]._id+"' data-toggle='modal' data-target='#changedata' onclick='changedata();' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
+       var comment = "<tr>"+"<td>"+scoreCollection.find()[i].Subject+"</td>"+"<td>"+scoreCollection.find()[i].Score+"</td>"+"<td><a herf="" id='scoreCollection.find()[i]._id' data-target='#details'>更多</td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changefirst' data-id='"+scoreCollection.find()[i]._id+"' data-toggle='modal' data-target='#changedata' onclick='changedata();' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
        $("table#scoretable tbody").append(comment);
    };
   scoreCollection.load(); 
