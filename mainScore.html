@@ -129,7 +129,7 @@ scoreCollection.load(function(){
         _id: id
       };
       $("p#alertresult").text("");
-      $("p#alertresult").append("<p><b>科目:&nbsp</b>"+scoreCollection.find(query)[0].Subject+"</p><br>"+"<p><b>分數:&nbsp</b>"+scoreCollection.find(query)[0].Score+"</p><br>"+"<p><b>日期:&nbsp</b>"+scoreCollection.find(query)[0].Date+"</p><br>"+"<p><b>其他:&nbsp</b>"+scoreCollection.find(query)[0].other+"</p><br>"+"<p><b>曜日:&nbsp</b>"+scoreCollection.find(query)[0].week+"</p><br>");
+      $("p#alertresult").append("<p><b>科目:&nbsp</b>"+scoreCollection.find(query)[0].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+scoreCollection.find(query)[0].Score+"</p>"+"<p><b>日期:&nbsp</b>"+scoreCollection.find(query)[0].Date+"</p>"+"<p><b>其他:&nbsp</b>"+scoreCollection.find(query)[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+scoreCollection.find(query)[0].week+"</p>");
       $("#alert").modal();
     };
 
