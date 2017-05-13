@@ -56,12 +56,12 @@
    <div class="container" style="text-align:center;">
           <div style="text-align:center; margin-bottom:25px; margin-top:30px;">
           <label for="input">科目:</label><br>
-          <input id="subject" type="text" class="form-control" style="text-align:center;" placeholder="Subject">
+          <input id="subject" type="text" class="form-control" style="text-align:center;" placeholder="Subject" required>
           <small id="joke" class="form-text text-muted text-danger">*必填</small>
           </div>
           <div style="text-align:center; margin-bottom:20px; margin-top:25px;">
           <label for="input">分數:</label><br>
-          <input id="score" type="number" min="0" max="100" class="form-control" style="text-align:center;" placeholder="Score">
+          <input id="score" type="number" min="0" max="100" class="form-control" style="text-align:center;" placeholder="Score" required>
           <small id="joke" class="form-text text-muted text-danger">*必填</small>
           </div>
           <div style="text-align:center; margin-bottom:15px; margin-top:15px;">
@@ -74,7 +74,7 @@
           </div>
           <div style="text-align:center; margin-bottom:30px; margin-top:15px;">
           <label>Week:</label>
-             <select class="form-control" id="job-id">
+             <select class="form-control" id="score-id">
                <option value="none">select one:</option>
                <option value="Monday">星期一</option> 
                <option value="Tuesday">星期二</option>
@@ -115,38 +115,27 @@
 //新增分數 
  function addscore(){
  
-  var  q1 = $("input#subject").val();
+  scoreCollection.insert({
+  
+    Subject: $("input#subject").val(),
+    Score: $("input#score").val(),
+    Date: $("input#date").val(),
+    other: $("textarea#other").val(),
+    week: $("select#score-id :selected").val()
+  
+  });
+    
+    scoreCollection.save();
     $("input#subject").val("");
-    var  q2 = $("input#score").val();
     $("input#score").val("");
-    var  q3 = $("input#date").val();
     $("input#date").val("");
-    var  q4 = $("textarea#other").val();
     $("input#other").val("");
-    var  q5 = $("#job-id").val("select:selected");
-  
-  var newScore = {  
-  
-   Subject: q1,
-   Score: q2,
-   Date: q3,
-   other: q4,
-   week: q5,
- 
-  }
-  if(q1!=="" && q2!==""){
-      scoreCollection.insert(newScore);
-      scoreCollection.save();
-      console.log(newScore);
+    $("select#score-id").vai("");
+    
       $("p#alertresult").text("");
       $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
       $("#alert").modal();
-     }else{
-      $("p#alertresult").text("");
-      $("p#alertresult").append("<b>"+"請輸入你的必填資料"+"</b>");
-      $("#alert").modal();
-     }
- 
+   
  }
  $("table").on("click","button#enter",addscore); 
    
