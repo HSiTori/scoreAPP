@@ -111,8 +111,8 @@
   var r=confirm("確定要刪除嗎?")
   console.log(i);
   if (r==true){
-    scoreCollection.remove({ _id: scoreCollection.find()[i]._id });
     console.log(scoreCollection.find()[i]._id);
+    scoreCollection.remove({ _id: scoreCollection.find()[i]._id });
     scoreCollection.save();
     showscore();
   }else{
