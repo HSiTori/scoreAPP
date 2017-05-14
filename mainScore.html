@@ -108,9 +108,12 @@
 <div class="modal-dialog modal-lg" role="document">
    <div class="modal-content" style="margin-top: 60%;">
      <div class="modal-header" style="text-align:center;">
-      <div id="modal-head" style="text-align:center;">
+      <div id="modal-head-right" style="text-align:center;">
         <p><b>更改成功!!</b></p>
         <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+      </div>
+      <div id="modal-head-wrong" style="text-align:center;">
+        <div class='alert alert-danger'><strong>Danger!</strong><p>請輸入必填資料!</p></div>
       </div>
       <div id="most" style="text-align:center;">
        <h2 style="text-align:center;" ><b>更改資料</b></h2> 
@@ -225,7 +228,8 @@ function changedata(i){
      };
       $("a.clean").text("");
       $("div#addbutton").text("");
-      $("div#modal-head").hide();
+      $("div#modal-head-right").hide();
+      $("div#modal-head-wrong").hide();
       $("a#first-subject").append("<b>原科目為&nbsp</b>"+scoreCollection.find(changedetail)[0].Subject);
       $("a#first-score").append("<b>原分數為&nbsp</b>"+scoreCollection.find(changedetail)[0].Score);
       $("a#first-date").append("<b>原日期為&nbsp</b>"+scoreCollection.find(changedetail)[0].Date);
@@ -258,12 +262,12 @@ function changedata(i){
            $("textarea#other-change").val("");
            $("select#score-id-change").val("");
            $("div#most").hide();
-          $("div#modal-head").show();
+          $("div#modal-head-right").show();
           showscore();
          
   }
  }else{
-     $("div#most").append("<div class='alert alert-danger'><strong>Danger!</strong><p>請輸入必填資料!</p></div>");
+     $("div#modal-head-wrong").show();
      //希望可以modal覆蓋在modal上面  
      //$("p#alertresult").text("");
      //$("p#alertresult").append("<b>請輸入必填資料</b>");
