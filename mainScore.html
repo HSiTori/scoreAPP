@@ -78,7 +78,7 @@
      <div class="modal-header">
        <h4 style="text-align:center;" >詳細資料</h4> 
        <p id='information' style="text-align:center;"></p>
-       <div>
+       <div style="text-align:center;">
        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
        </div>
      </div>  
@@ -107,7 +107,7 @@
 <div id="changemodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog modal-lg" role="document">
    <div class="modal-content" style="margin-top: 60%;">
-     <div class="modal-header">
+     <div class="modal-header" id="most" style="text-align:center;">
        <h2 style="text-align:center;" ><b>更改資料</b></h2> 
        <p id='changedata' style="text-align:center;"></p>
      <div class="select-body" style="text-align:center;">
@@ -224,7 +224,7 @@ function changedata(i){
       $("a#first-date").append("<b>原日期為&nbsp</b>"+scoreCollection.find(changedetail)[0].Date);
       $("a#first-other").append("<b>其他:&nbsp</b>"+scoreCollection.find(changedetail)[0].other);
       $("a#first-week").append("<b>原本為&nbsp</b>"+scoreCollection.find(changedetail)[0].week);
-      $("div#addbutton").append("<button class='btn btn-info' onclick='changescore("+i+");'>Enter</button>"+"<button type='button' class='btn btn-danger' data-dismiss='modal'>Cancel</button>");
+      $("div#addbutton").append("<button class='btn btn-info' onclick='changescore("+i+");'>Enter</button>"+"&nbsp"+"<button type='button' class='btn btn-danger' data-dismiss='modal'>Cancel</button>");
       $("#changemodal").modal();
 };
 
@@ -249,17 +249,17 @@ function changedata(i){
            $("input#date-change").val("");
            $("textarea#other-change").val("");
            $("select#score-id-change").val("");
-          $("p#alertresult").text("");
-          $("p#alertresult").append("<b>更改成功!!</b>");
-          $("#alert").modal();
+           $("div#most").val("");
+          $("div#most").append("<b>更改成功!!</b>"+"<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>");
           showscore();
          
   }
  }else{
-  
-     $("p#alertresult").text("");
-     $("p#alertresult").append("<b>請輸入必填資料</b>");
-     $("#alert").modal(); 
+     $("div#most").append("<div class='alert alert-danger'><strong>Danger!</strong><a>請輸入必填資料!</a></div>");
+     //希望可以modal覆蓋在modal上面  
+     //$("p#alertresult").text("");
+     //$("p#alertresult").append("<b>請輸入必填資料</b>");
+     //$("#alert").modal(); 
  
  }
  } 
