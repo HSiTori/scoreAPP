@@ -218,6 +218,7 @@ function changedata(i){
        _id: editid
      };
       $("a.clean").text("");
+      $("div#addbutton").text("");
       $("a#first-subject").append("<b>原科目為&nbsp</b>"+scoreCollection.find(changedetail)[0].Subject);
       $("a#first-score").append("<b>原分數為&nbsp</b>"+scoreCollection.find(changedetail)[0].Score);
       $("a#first-date").append("<b>原日期為&nbsp</b>"+scoreCollection.find(changedetail)[0].Date);
