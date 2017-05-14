@@ -243,6 +243,11 @@ function changedata(i){
         if(r){
           scoreCollection.updateById(editid,editdata);
           scoreCollection.save();
+           $("input#subject-change").val("");
+           $("input#score-change").val("");
+           $("input#date-change").val("");
+           $("input#other-change").val("");
+           $("select#score-id-change").val("");
           $("p#alertresult").text("");
           $("p#alertresult").append("<b>更改成功!!</b>");
           $("#alert").modal();
