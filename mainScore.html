@@ -96,25 +96,25 @@
      <div class="select-body" style="text-align:center;">
      <div class="container" style="text-align:center;">
           <div style="text-align:center;">
-          <label for="input">科目:</label><br>
-          <input id="subject-change" type="text" class="form-control" style="text-align:center;" placeholder="">
+          <p class="clean" id="first-subject" for="input"></p><br>
+          <input id="subject-change" type="text" class="form-control" style="text-align:center;" placeholder="Subject">
           <small id="joke" class="form-text text-muted text-danger">*必填</small>
           </div>
           <div style="text-align:center;">
-          <label for="input">分數:</label><br>
+          <p class="clean" id="first-score" for="input"></p><br>
           <input id="score-change" type="number" class="form-control" style="text-align:center;" placeholder="Score">
           <small id="joke" class="form-text text-muted text-danger">*必填</small>
           </div>
           <div style="text-align:center;">
-          <label for="input">日期:</label><br>
+          <p class="clean" id="first-date" for="input"></p><br>
           <input id="date-change" type="date" class="form-control" style="text-align:center;" placeholder="Date"><br>
           </div>
           <div style="text-align:center;">
-          <label for="input">其他:</label><br>
+          <p class="clean" id="first-other" for="input"></p><br>
           <textarea class="form-control" rows="3" id="other-change" style="text-align:center;" placeholder="Other"></textarea><br>
           </div>
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
-          <label>Week:</label>
+          <p class="clean" id="first-week"></p>
              <select class="form-control" id="score-id-change">
                <option>select one:</option>
                <option value="Monday">星期一</option> 
@@ -202,7 +202,12 @@ function changedata(i){
      var changedetail={
        _id: id
      };
-      $("input#subject-change.placeholder").val(scoreCollection.find(changedetail)[0].Subject);
+      $("p.clean").text("");
+      $("p#first-subject").append("<b>原科目為&nbsp</b>"+scoreCollection.find(changedetail)[0].Subject);
+      $("p#first-score").append("<b>原分數為&nbsp</b>"+scoreCollection.find(changedetail)[0].Score);
+      $("p#first-date").append("<b>原日期為&nbsp</b>"+scoreCollection.find(changedetail)[0].Date);
+      $("p#first-other").append("<b>其他:&nbsp</b>"+scoreCollection.find(changedetail)[0].other);
+      $("p#first-week").append("<b>原本為&nbsp</b>"+scoreCollection.find(changedetail)[0].week);
       $("#changemodal").modal();
 };
 
