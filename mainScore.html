@@ -223,7 +223,7 @@ function changedata(i){
       $("a#first-date").append("<b>原日期為&nbsp</b>"+scoreCollection.find(changedetail)[0].Date);
       $("a#first-other").append("<b>其他:&nbsp</b>"+scoreCollection.find(changedetail)[0].other);
       $("a#first-week").append("<b>原本為&nbsp</b>"+scoreCollection.find(changedetail)[0].week);
-      $("div#addbutton").text("<button class="btn btn-info" onclick="changescore(i);">Enter</button>"+"<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>");
+      $("div#addbutton").text("<button class='btn btn-info' onclick='changescore("+i+");'>Enter</button>"+"<button type='button' class='btn btn-danger' data-dismiss='modal'>Cancel</button>");
       $("#changemodal").modal();
 };
 
