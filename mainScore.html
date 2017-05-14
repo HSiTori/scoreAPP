@@ -86,8 +86,56 @@
 </div>
 </div> 
   
-  
-  
+<!--編輯資料-->  
+<div id="changemodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+   <div class="modal-content" style="margin-top: 60%;">
+     <div class="modal-header">
+       <h2 style="text-align:center;" ><b>更改資料</b></h2> 
+       <p id='changedata' style="text-align:center;"></p>
+     <div class="select-body" style="text-align:center;">
+     <div class="container" style="text-align:center;">
+          <div style="text-align:center;">
+          <label for="input">科目:</label><br>
+          <input id="subject-change" type="text" class="form-control" style="text-align:center;" placeholder="Subject">
+          <small id="joke" class="form-text text-muted text-danger">*必填</small>
+          </div>
+          <div style="text-align:center;">
+          <label for="input">分數:</label><br>
+          <input id="score-change" type="number" class="form-control" style="text-align:center;" placeholder="Score">
+          <small id="joke" class="form-text text-muted text-danger">*必填</small>
+          </div>
+          <div style="text-align:center;">
+          <label for="input">日期:</label><br>
+          <input id="date-change" type="date" class="form-control" style="text-align:center;" placeholder="Date"><br>
+          </div>
+          <div style="text-align:center;">
+          <label for="input">其他:</label><br>
+          <textarea class="form-control" rows="3" id="other-change" style="text-align:center;" placeholder="Other"></textarea><br>
+          </div>
+          <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
+          <label>Week:</label>
+             <select class="form-control" id="score-id-change">
+               <option>select one:</option>
+               <option value="Monday">星期一</option> 
+               <option value="Tuesday">星期二</option>
+               <option value="Wednesday">星期三</option>
+               <option value="Thursday">星期四</option>
+               <option value="Friday">星期五</option>
+               <option value="Saturday">星期六</option>
+               <option value="Sunday">星期日</option>
+             </select>  
+          </div>
+        </div>
+        </div>
+       <div style="text-align:center;">
+       <button class="btn btn-info" onclick="">Enter</button>  
+       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+     </div>
+     </div> 
+   </div> 
+</div>
+</div>   
   
   
   
@@ -119,7 +167,7 @@ scoreCollection.load(function(){
  
    $("#scoretable tbody").text("");
    for(var i=0;i<scoreCollection.find().length;i++){
-       var comment = "<tr>"+"<td>"+scoreCollection.find()[i].Subject+"</td>"+"<td>"+scoreCollection.find()[i].Score+"</td>"+"<td><a id="+scoreCollection.find()[i]._id+" onclick='moredetail("+i+");'>更多</a></td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changefirst' data-id='"+scoreCollection.find()[i]._id+"' data-toggle='modal' data-target='#changedata' onclick='changedata();' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
+       var comment = "<tr>"+"<td>"+scoreCollection.find()[i].Subject+"</td>"+"<td>"+scoreCollection.find()[i].Score+"</td>"+"<td><a id="+scoreCollection.find()[i]._id+" onclick='moredetail("+i+");'>更多</a></td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+scoreCollection.find()[i]._id+"' onclick='changedata(i);' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
        $("table#scoretable tbody").append(comment);
    };
     $("div#scorelist").show();
@@ -142,6 +190,21 @@ scoreCollection.load(function(){
  
  
  //顯示最近十筆資料
+ 
+ 
+ 
+ 
+ 
+ 
+//修改資料
+function changedata(i){
+     var id = scoreCollection.find()[i]._id
+     var changedetail={
+       _id: id
+     };
+      $("input#subject-change placeholder").val(scoreCollection.find(query)[0].Subject);
+      $("#changemodal").modal();
+};
 
  
  
