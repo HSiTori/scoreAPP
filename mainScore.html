@@ -202,7 +202,7 @@ function changedata(i){
      var changedetail={
        _id: id
      };
-      $("input#subject-change placeholder").val(scoreCollection.find(changedetail)[0].Subject);
+      $("input#subject-change.placeholder").val(scoreCollection.find(changedetail)[0].Subject);
       $("#changemodal").modal();
 };
 
