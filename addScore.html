@@ -117,7 +117,7 @@
 <script>
 //新增分數 
  function addscore(){
-  if($("input#subject").val()!=="" || $("input#score").val()!==""){
+  if($("input#subject").val()!=="" && $("input#score").val()!==""){
   scoreCollection.insert({
   
     Subject: $("input#subject").val(),
