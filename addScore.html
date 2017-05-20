@@ -64,7 +64,7 @@
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">分數:</label><br>
           <input id="score" type="number" min="0" max="100" class="form-control" style="text-align:center;" placeholder="Enter a Score">
-          <small id="joke" class="form-text text-muted text-danger">*必填</small>
+          <small id="joke-score" class="form-text text-muted text-danger">*必填</small>
           </div>
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">日期:</label><br>
@@ -149,6 +149,15 @@
   } 
  }
  $("table").on("click","button#enter",addscore); 
+ 
+ $("#score").change(function(){
+   if($("#score").val()>100){
+      $("#score").val("100");
+      $("#joke-score").text("");
+      $("#joke-score").append("<b>提醒:最大值到100</b>");
+      } 
+ })
+ .change();
    
   
   
