@@ -189,7 +189,7 @@ scoreCollection.load(function(){
     console.log(scoreCollection.find()[i]._id);
     scoreCollection.remove({ _id: scoreCollection.find()[i]._id });
     scoreCollection.save();
-    showscore();
+    showscore(scoreCollection.find());
   }else{
     alert("好的!不刪除!");
   }
