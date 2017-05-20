@@ -102,7 +102,7 @@
      query = scoreCollection.find({
        Date: {
           "$gte" : year+"-"+month+"-"+"01",
-          "$lte" : year+"-"+nextMonth+"-"+"01",
+          "$lte" : year+"-"+nextMonth+"-"+"01"
        }
      });
      if(query.length!=0){
