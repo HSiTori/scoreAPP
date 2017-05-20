@@ -169,18 +169,19 @@
   </div>
 <script>
  
-//設定資料顯示格式 
- var result= scoreCollection.find(
-  { },
-  { $orderBy: {date:-1},$limit: 10}
- );
- 
- 
  //加入成績資料
 scoreCollection.load(function(){
-   showscore();
+  var result= scoreCollection.find(
+  { },
+  { $orderBy: {date:-1},$limit: 10}
+ ); 
+ 
+ showscore(result);
+ 
 });  
   
+//設定資料顯示格式 
+ 
  
  //刪除
  function deletescoredetail(i){
@@ -196,11 +197,11 @@ scoreCollection.load(function(){
   }
  };  
 
- function showscore(){
-   if(scoreCollection.find().length!=0){
+ function showscore(result){
+   if(result.length!=0){
    $("#scoretable tbody").text("");
-   for(var i=0;i<scoreCollection.find().length;i++){
-       var comment = "<tr><td>"+scoreCollection.find()[i].Subject+"</td><td>"+scoreCollection.find()[i].Score+"</td><td><a id="+scoreCollection.find()[i]._id+" onclick='moredetail("+i+");'>更多</a></td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+scoreCollection.find()[i]._id+"' onclick='changedata("+i+");' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
+   for(var i=0;i<result.length;i++){
+       var comment = "<tr><td>"+result[i].Subject+"</td><td>"+result[i].Score+"</td><td><a id="+result[i]._id+" onclick='moredetail("+i+");'>更多</a></td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+result[i]._id+"' onclick='changedata("+i+");' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
        $("table#scoretable tbody").append(comment);
    };
     $("div#scorelist").show();
