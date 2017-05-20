@@ -94,10 +94,10 @@
     var nextMonth = month+1;
     var year = date.getFullYear()+1;
      if(month<10){
-        month = "0"month
+        month = "0"+month;
      }
      if(nextmonth<10){
-        nextmonth = "0"nextmonth
+        nextmonth = "0"+nextmonth;
      }
      query = scoreCollection.find({
        Date: {
