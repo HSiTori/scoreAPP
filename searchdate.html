@@ -50,39 +50,81 @@
   
   <!--選擇條件-->
   <div>
-    <input type="radio" name="date-search" value="">查詢一個月的成績紀錄
+    <input type="radio" name="date-search" id="thismonth">查詢當月的成績紀錄
   </div>
   <div>
-    <input type="radio" name="date-search" value="">查詢一週的成績紀錄
+    <input type="radio" name="date-search" id="thisweek">查詢當週的成績紀錄
   </div>
   <div>
-    <input type="radio" name="date-search" value="">特定範圍時間的成績紀錄
+    <input type="radio" name="date-search" id="selectTime">特定範圍時間的成績紀錄
   </div>
   <div>
     <input id="selectDate01" type="date" style="text-align:center;"><b>~</b><input id="selectDate02" type="date" style="text-align:center;">
   </div>
   
   <!--搜尋表格-->
-  <div class="col-xs-12" id="scorelist">
-  <table id="scoretable" class="table table-striped" style="">
+  <div class="col-xs-12" id="scoreSearchlist">
+  <div id="messageTop" style="text-align:center;">
+  </div> 
+  <table id="scoreSearchtable" class="table table-striped" style="">
     <thead>
      <tr>
         <th>科目</th>
         <th>分數</th>
         <th>詳細</th>
-        <th>操作</th>
      </tr>
     </thead>
     <tbody>
     </tbody>
   </table>
-  <div id="message" style="text-align:center;">
+  <div id="messageButton" style="text-align:center;">
   </div> 
 </div>
   
 <script> 
-  
-  
+ var query; 
+ function  searchDateDetail(){
+   
+ if($("input#thismonth:checked").length!=0){
+    var date = new Date();
+    var month = date.getMonth()+1;
+    var nextMonth = month+1;
+    var year = date.getFullYear()+1;
+     if(month<10){
+        month = "0"month
+     }
+     if(nextmonth<10){
+        nextmonth = "0"nextmonth
+     }
+     query = scoreCollection.find({
+       Date: {
+          "$gte" : year+"-"+month+"-"+"01",
+          "$lte" : year+"-"+nextmonth+"-"+"01",
+       }
+     });
+     if(query.length!=0){
+   $("#scoreSearchtable tbody").text("");
+   for(var i=0;i<query.length;i++){
+       var comment = "<tr><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" onclick='moredetail("+i+");'>更多</a></td></tr>";
+       $("table#scoreSearchtable tbody").append(comment);
+   };
+    $("div#scoreSearchlist").show();
+    $("#messageButton").append("<b>查詢時間:&nbsp</b>"+year+"-"+month+"-"+"01"+"<b>~</b>"+year+"-"+nextmonth+"-"+"01");
+   }else{
+     $("#scoreSearchtable tbody").text("");
+     $("#messageTop").append("<b>無任何資料</b>");
+   }
+   
+   
+   
+   }
+ 
+ 
+ 
+ 
+ 
+ 
+ }
   
   
 </script>  
