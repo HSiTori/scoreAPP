@@ -61,6 +61,9 @@
   <div>
     <input id="selectDate01" type="date" style="text-align:center;"><b>~</b><input id="selectDate02" type="date" style="text-align:center;">
   </div>
+  <div>
+   <button onclick="searchDateDetail();">查詢</button>  
+  </div>  
   
   <!--搜尋表格-->
   <div class="col-xs-12" id="scoreSearchlist">
@@ -82,9 +85,9 @@
 </div>
   
 <script> 
- var query; 
+  
  function  searchDateDetail(){
-   
+ var query; 
  if($("input#thismonth:checked").length!=0){
     var date = new Date();
     var month = date.getMonth()+1;
