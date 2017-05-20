@@ -69,6 +69,8 @@
     <tbody>
     </tbody>
   </table>
+  <div id="message">
+  </div> 
 </div>
   
  <!--更多modal--> 
@@ -167,6 +169,10 @@
   </div>
 <script>
  
+//設定資料顯示格式 
+ var result= scoreCollection.find({ },{ $orderBy: {date:-1},$limit: 10});
+ 
+ 
  //加入成績資料
 scoreCollection.load(function(){
    showscore();
@@ -188,13 +194,17 @@ scoreCollection.load(function(){
  };  
 
  function showscore(){
- 
+   if(result.length!=0){
    $("#scoretable tbody").text("");
-   for(var i=0;i<scoreCollection.find().length;i++){
-       var comment = "<tr>"+"<td>"+scoreCollection.find()[i].Subject+"</td>"+"<td>"+scoreCollection.find()[i].Score+"</td>"+"<td><a id="+scoreCollection.find()[i]._id+" onclick='moredetail("+i+");'>更多</a></td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+scoreCollection.find()[i]._id+"' onclick='changedata("+i+");' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
+   for(var i=0;i<result.length;i++){
+       var comment = "<tr>"+"<td>"+result[i].Subject+"</td>"+"<td>"+result[i].Score+"</td>"+"<td><a id="+result[i]._id+" onclick='moredetail("+i+");'>更多</a></td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+result[i]._id+"' onclick='changedata("+i+");' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
        $("table#scoretable tbody").append(comment);
    };
     $("div#scorelist").show();
+   }else{
+     $("#scoretable tbody").text("");
+     $("#message").append("<b>無任何資料</b>");
+   }
  
  };
   
@@ -210,15 +220,6 @@ scoreCollection.load(function(){
       $("#alert-information").modal();
     };
 
- 
- 
- 
- //顯示最近十筆資料
- 
- 
- 
- 
- 
  
 //修改資料
 function changedata(i){
