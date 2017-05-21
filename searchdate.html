@@ -103,6 +103,8 @@ $("#selectTime-div").hide();
 $("input#selectTime").change(function(){
   if($("input#selectTime:checked").length!=0){
      $("#selectTime-div").show();
+  }else{
+     $("#selectTime-div").hide();
   }
 }) 
 .change();
