@@ -100,9 +100,12 @@
   
 //依據radio選擇顯示物件
 $("#selectTime-div").hide();
-if($("input#selectTime:checked").length!=0){
-  $("#selectTime-div").show();
-}  
+$("input#selectTime").change(function(){
+  if($("input#selectTime:checked").length!=0){
+     $("#selectTime-div").show();
+  }
+}) 
+.change();
   
   
 //搜尋(當月,當週,特定範圍) 
