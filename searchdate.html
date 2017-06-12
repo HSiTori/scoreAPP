@@ -178,12 +178,13 @@ function  searchDateDetail(){
 
 //"更多"function
   function moredetail(i){
+      var query;
       var id = this.id;
-      var query={
-        _id: id
-      };
+      query = scoreCollection.find({
+       _id: id
+      });
       $("p#information").text("");
-      $("p#information").append("<p><b>科目:&nbsp</b>"+scoreCollection.find(query)[0].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+scoreCollection.find(query)[0].Score+"</p>"+"<p><b>其他:&nbsp</b>"+scoreCollection.find(query)[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+scoreCollection.find(query)[0].week+"</p>");
+      $("p#information").append("<p><b>科目:&nbsp</b>"+query[0].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+query[0].Score+"</p>"+"<p><b>其他:&nbsp</b>"+query[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+query[0].week+"</p>");
       $("#alert-information").modal();
     };
   
