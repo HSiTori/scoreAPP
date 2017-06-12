@@ -164,7 +164,7 @@ function  searchDateDetail(){
       if(query.length!=0){
         $("#scoreSearchtable tbody").text("");
         for(var i=0;i<query.length;i++){
-           var comment = "<tr><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" onclick='moredetails("+i+");'>更多</a></td></tr>";
+           var comment = "<tr><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
            $("table#scoreSearchtable tbody").append(comment);
         };
         $("div#scoreSearchlist").show();
@@ -178,15 +178,37 @@ function  searchDateDetail(){
 
 //"更多"function
   function moredetails(i){
-      var query;
-      var id = this.id;
-      query = scoreCollection.find({
+    var query; 
+    if($("input#thismonth:checked").length!=0){
+    var date = new Date();
+    var month = date.getMonth()+1;
+    var nextMonth = month+1;
+    var year = date.getFullYear();
+     if(month<10){
+        month = "0"+month;
+     }
+     if(nextMonth<10){
+        nextMonth = "0"+nextMonth;
+     }
+     query = scoreCollection.find({
+       Date: {
+          "$gte" : year+"-"+month+"-"+"01",
+          "$lte" : year+"-"+nextMonth+"-"+"01"
+       }
+     });
+      }  
+      if(query.length!=0){
+      var moreinfor;
+      var id = query[i]._id;
+      moreinfor = query.find({
        _id: {  id  }
       });
       $("p#information").text("");
-      $("p#information").append("<p><b>科目:&nbsp</b>"+query[0].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+query[0].Score+"</p>"+"<p><b>其他:&nbsp</b>"+query[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+query[0].week+"</p>");
+      $("p#information").append("<p><b>科目:&nbsp</b>"+moreinfor[0].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+moreinfor[0].Score+"</p>"+"<p><b>其他:&nbsp</b>"+moreinfor[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+moreinfor[0].week+"</p>");
       $("#alert-information").modal();
-    };
+    
+      }
+      };
   
   
   
