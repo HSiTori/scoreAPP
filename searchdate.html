@@ -164,7 +164,7 @@ function  searchDateDetail(){
       if(query.length!=0){
         $("#scoreSearchtable tbody").text("");
         for(var i=0;i<query.length;i++){
-           var comment = "<tr><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" onclick='moredetail("+i+");'>更多</a></td></tr>";
+           var comment = "<tr><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" onclick='moredetails("+i+");'>更多</a></td></tr>";
            $("table#scoreSearchtable tbody").append(comment);
         };
         $("div#scoreSearchlist").show();
@@ -177,7 +177,7 @@ function  searchDateDetail(){
 }  
 
 //"更多"function
-  function moredetail(i){
+  function moredetails(i){
       var query;
       var id = this.id;
       query = scoreCollection.find({
