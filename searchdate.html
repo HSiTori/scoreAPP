@@ -128,7 +128,8 @@ $("input#selectTime").change(function(){
  
 function  searchDateDetail(){
  var query; 
- if($("input#thismonth:checked").length!=0){
+ //當月
+  if($("input#thismonth:checked").length!=0){
     var date = new Date();
     var month = date.getMonth()+1;
     var nextMonth = month+1;
@@ -145,7 +146,7 @@ function  searchDateDetail(){
           "$lte" : year+"-"+nextMonth+"-"+"01"
        }
      });
-     if(query.length!=0){
+      if(query.length!=0){
         $("#scoreSearchtable tbody").text("");
         for(var i=0;i<query.length;i++){
            var comment = "<tr><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" onclick='moredetail("+i+");'>更多</a></td></tr>";
