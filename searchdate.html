@@ -200,9 +200,9 @@ function  searchDateDetail(){
       if(query.length!=0){
       var moreinfor;
       var id = query[i]._id;
-      moreinfor = query.find({
-       _id: {  id  }
-      });
+      var moreinfor = {
+       _id: id
+      };
       $("p#information").text("");
       $("p#information").append("<p><b>科目:&nbsp</b>"+moreinfor[0].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+moreinfor[0].Score+"</p>"+"<p><b>其他:&nbsp</b>"+moreinfor[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+moreinfor[0].week+"</p>");
       $("#alert-information").modal();
