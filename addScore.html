@@ -70,14 +70,13 @@
                <option value="History">歷史</option>
                <option value="Civics">公民</option>
               <option value="other">其他(請自填):</option>
-             </select>  
+             </select>
+          <small id="joke" class="form-text text-muted text-danger">*必填</small>  
           </div> 
           <div id="subject-other-div">
            <input id="subject-other" type="text" class="form-control" style="text-align:center;" placeholder="Enter a Subject">
           </div>
-          <small id="joke" class="form-text text-muted text-danger">*必填</small>
-          
-          
+                    
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">分數:</label><br>
           <input id="score" type="number" min="0" max="100" class="form-control" style="text-align:center;" placeholder="Enter a Score">
@@ -167,7 +166,7 @@ $("div#subject-other-div").text("");
       $("p#alertresult").text("");
       $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
       $("#alert").modal();
-  }else if($("select#subject :selected").val()!=="" && $("select#subject :selected").val() =="other" && $("input#score").val()!==""){
+  }else if($("select#subject :selected").val()!=="" && $("select#subject :selected").val() =="other" && $("input#score").val()!=="" && $("input#subject-other").val()!==""){
     
     scoreCollection.insert({
   
