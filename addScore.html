@@ -118,9 +118,10 @@
 //新增分數 
  function addscore(){
   if($("input#subject").val()!=="" && $("input#score").val()!==""){
-  if($("input#date").val() == ""){
-     $("input#date").val("nodata");
-  }
+  //無選取時改選項
+   //if($("input#date").val() == ""){
+    // $("input#date").val("nodata");
+  //}
    scoreCollection.insert({
   
     Subject: $("input#subject").val(),
