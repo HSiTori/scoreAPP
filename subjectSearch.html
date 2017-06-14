@@ -54,31 +54,68 @@
 
 <!--選擇條件-->
   <div style="text-align:center;">
-    <input type="radio" name="sub-search" id="chinese">國文
-    <input type="radio" name="sub-search" id="math">數學
-    <input type="radio" name="sub-search" id="english">英文
+    <input type="radio" name="sub-search" id="Chinese" value="Chinese">國文
+    <input type="radio" name="sub-search" id="Math" value="Math">數學
+    <input type="radio" name="sub-search" id="English" value="English">英文
   </div>
   <div style="text-align:center;">
-    <input type="radio" name="sub-search" id="geography">地理
-    <input type="radio" name="sub-search" id="history">歷史
-    <input type="radio" name="sub-search" id="civics">公民
+    <input type="radio" name="sub-search" id="Geography" value="Geography">地理
+    <input type="radio" name="sub-search" id="History" value="History">歷史
+    <input type="radio" name="sub-search" id="Civics" value="Civics">公民
   </div>
   <div style="text-align:center;">
-    <input type="radio" name="sub-search" id="biological">生物
-    <input type="radio" name="sub-search" id="chemistry">化學
-    <input type="radio" name="sub-search" id="physical">物理
-    <input type="radio" name="sub-search" id="earth Science">地科
+    <input type="radio" name="sub-search" id="Biological" value="Biological">生物
+    <input type="radio" name="sub-search" id="Chemistry" value="Chemistry">化學
+    <input type="radio" name="sub-search" id="Physical" value="Physical">物理
+    <input type="radio" name="sub-search" id="Earth Science" value="Earth Science">地科
   </div>
-  <div style="text-align:center;">
-    其他科目搜尋:<input name="sub-search" id="other" style="text-align:center;" placeholder="Enter a subject.">
+  <div style="text-align:center; margin-bottom:20px; margin-top:10px;">
+    其他科目搜尋:<input name="sub-search" id="other" style="text-align:center;" placeholder="Enter a subject." class="form-control">
   </div>
   <div style="text-align:center;">
    <button onclick="searchSubDetail();">查詢</button>  
   </div>    
   
+<!--搜尋表格-->
+  <div class="col-xs-12" id="subSearchlist">
+  <div id="messageTop" style="text-align:center;">
+  </div> 
+  <table id="subSearchtable" class="table table-striped" style="">
+    <thead>
+     <tr>
+        <th>分數</th>
+        <th>日期</th>
+        <th>詳細</th>
+        <th>操作</th>
+     </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div id="messageButton" style="text-align:center;">
+  </div> 
+</div>  
   
-  
-  
+<!--"更多"modal-->   
+   <div id="alert-information" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+   <div class="modal-content" style="margin-top: 60%;">
+     <div class="modal-header">
+       <h4 style="text-align:center;" >詳細資料</h4> 
+       <p id='information' style="text-align:center;"></p>
+       <div style="text-align:center;">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+       </div>
+     </div>  
+   </div> 
+</div>
+</div>  
+ 
+ 
+ 
+ 
+ 
+ 
 </div>
 </div>
 
@@ -86,6 +123,29 @@
   
 <script>  
 
+//搜尋科目 
+function searchSubDetail(){
+var query;
+  if($("input#Chinese:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Chinese").val(),
+     });
+    if(query.length!=0){
+        $("#messageButton").text("");
+        $("#subSearchtable tbody").text("");
+     for(var i=0;i<query.length;i++){
+           var comment = "<tr><td>"+query[i].Score+"</td><td>"+query[i].Date+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td><td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+query[i]._id+"' onclick='changedata("+i+");' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
+           $("table#scoreSearchtable tbody").append(comment);
+        };
+        $("div#subSearchlist").show();
+        $("#messageButton").append("<b>科目:&nbsp</b>國文");
+  
+  
+  }
+
+
+
+} 
   
   
 </script>  
