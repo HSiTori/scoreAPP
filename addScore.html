@@ -118,7 +118,7 @@
 //新增分數 
  function addscore(){
   if($("input#subject").val()!=="" && $("input#score").val()!==""){
-  if($("input#date").val()=""){
+  if($("input#date").val() == ""){
      $("input#date").val(無資料)
   }
    scoreCollection.insert({
