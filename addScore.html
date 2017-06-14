@@ -54,6 +54,7 @@
 <div class="select-body" style="text-align:center;">
    <div class="container" style="text-align:center;">
           <form action="/mainScore.html">
+          
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">科目:</label><br>
              <select class="form-control" id="subject">
@@ -71,9 +72,11 @@
               <option value="other">其他(請自填):</option>
              </select>  
           </div> 
-          <input id="subject-other" type="text" class="form-control" style="text-align:center;" placeholder="Enter a Subject">
-          <small id="joke" class="form-text text-muted text-danger">*必填</small>
+          <div id="subject-other-div">
+           <input id="subject-other" type="text" class="form-control" style="text-align:center;" placeholder="Enter a Subject">
           </div>
+          <small id="joke" class="form-text text-muted text-danger">*必填</small>
+          
           
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">分數:</label><br>
@@ -104,7 +107,8 @@
                <option value="Sunday">星期日</option>
              </select>  
           </div>
-      <input type="button" class="btn btn-default" id="enter" onclick="addscore();" value="Enter">
+      
+    <input type="button" class="btn btn-default" id="enter" onclick="addscore();" value="Enter">
    </form> 
   </div>
 </div>
@@ -134,11 +138,11 @@
 </div> 
  
 <script>
-$("input#subject-other").hide();
+$("div#subject-other-div").text("");
 
 //新增分數 
  function addscore(){
-  if($("select#subject :selected").val()!=="other" && $("input#score").val()!==""){
+  if($("select#subject :selected").val()!=="" && $("select#subject :selected").val()!=="other" && $("input#score").val()!==""){
   //無選取時改選項
    //if($("input#date").val() == ""){
     // $("input#date").val("nodata");
@@ -155,6 +159,28 @@ $("input#subject-other").hide();
     
     scoreCollection.save();
     $("select#subject :selected").val("");
+    $("input#score").val("");
+    $("input#date").val("");
+    $("input#other").val("");
+    $("select#week-id").val("");
+    
+      $("p#alertresult").text("");
+      $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
+      $("#alert").modal();
+  }else if($("select#subject :selected").val()!=="" && $("select#subject :selected").val() =="other" && $("input#score").val()!==""){
+    
+    scoreCollection.insert({
+  
+    Subject: $("input#subject-other").val(),
+    Score: $("input#score").val(),
+    Date: $("input#date").val(),
+    other: $("textarea#other").val(),
+    week: $("select#week-id :selected").val()
+  
+  });
+    
+    scoreCollection.save();
+    $("input#subject-other").val("");
     $("input#score").val("");
     $("input#date").val("");
     $("input#other").val("");
@@ -184,7 +210,7 @@ $("input#subject-other").hide();
  
  $("#subject").change(function(){
    if($("#subject").val() == "other"){
-      $("input#subject-other").show();
+      $("div#subject-other-div").append("<input id='subject-other' type='text' class='form-control' style='text-align:center;' placeholder='Enter a Subject'>");
       $("input#subject-other").text("");
       } 
  })  
