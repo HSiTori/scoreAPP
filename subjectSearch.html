@@ -131,7 +131,7 @@ function searchSubDetail(){
 var query;
   if($("input#Chinese :checked").length!=0){
      query = scoreCollection.find({
-       Subject: Chinese
+       Subject: $("input#Chinese :checked").val()
      });
     if(query.length!=0){
         $("#messageButton").text("");
@@ -153,7 +153,7 @@ function moredetails(i){
 var query;
   if($("input#Chinese :checked").length!=0){
      query = scoreCollection.find({
-       Subject: $("input#Chinese").val()
+       Subject: $("input#Chinese :checked").val()
      });
    if(query.length!=0){
       $("p#information").text("");
