@@ -58,7 +58,7 @@
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">科目:</label><br>
              <select class="form-control" id="subject">
-               <option value="">select one:</option>
+               <option value="none">select one:</option>
                <option value="Chinese">國文</option> 
                <option value="Math">數學</option>
                <option value="English">英文</option>
@@ -162,7 +162,7 @@ $("div#subject-other-div").text("");
     $("input#score").val("");
     $("input#date").val("");
     $("input#other").val("");
-    $("select#week-id").val("");
+    $("select#week-id :selected").val("");
     
       $("p#alertresult").text("");
       $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
@@ -171,7 +171,7 @@ $("div#subject-other-div").text("");
     
     scoreCollection.insert({
   
-    Subject: $("input#subject-other").val(),
+    Subject: $("select#subject :selected").val(),
     Score: $("input#score").val(),
     Date: $("input#date").val(),
     other: $("textarea#other").val(),
@@ -180,11 +180,11 @@ $("div#subject-other-div").text("");
   });
     
     scoreCollection.save();
-    $("input#subject-other").val("");
+    $("select#subject :selected").val("");
     $("input#score").val("");
     $("input#date").val("");
     $("input#other").val("");
-    $("select#week-id").val("");
+    $("select#week-id").val("none");
     
       $("p#alertresult").text("");
       $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
