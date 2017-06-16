@@ -142,6 +142,7 @@ var query;
         };
         $("div#select").hide();
         $("div#subSearchlist").show();
+        $("#messageTop").text("");
         $("#messageTop").append("<b>科目:&nbsp</b>國文");
         }else{
           $("table#subSearchtable tbody").text("");
@@ -153,7 +154,7 @@ var query;
 //更多
 function moredetails(i){
 var query;
-  if($("input#Chinese :checked").length!=0){
+  if($("input#Chinese:checked").length!=0){
      query = scoreCollection.find({
        Subject: $("input#Chinese").val()
      });
