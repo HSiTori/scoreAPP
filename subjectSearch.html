@@ -129,7 +129,7 @@ var query;
 //搜尋科目 
 function searchSubDetail(){
 var query;
-  if($("input#Chinese:checked").length!=0){
+  if($("input#Chinese :checked").length!=0){
      query = scoreCollection.find({
        Subject: Chinese
      });
@@ -151,7 +151,7 @@ var query;
 //更多
 function moredetails(i){
 var query;
-  if($("input#Chinese: checked").length!=0){
+  if($("input#Chinese :checked").length!=0){
      query = scoreCollection.find({
        Subject: $("input#Chinese").val()
      });
@@ -179,7 +179,7 @@ function deletescoredetail(i){
  };  
  function showscore(){
    var query;
-   if($("input#Chinese: checked").length!=0){
+   if($("input#Chinese :checked").length!=0){
      query = scoreCollection.find({
        Subject: $("input#Chinese").val()
      });
