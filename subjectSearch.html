@@ -147,7 +147,25 @@ var query;
     }
 } 
 }  
-  
+
+//更多
+function moredetails(i){
+var query;
+  if($("input#Chinese:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Chinese").val()
+     });
+   if(query.length!=0){
+      $("p#information").text("");
+      $("p#information").append("<p><b>分數:&nbsp</b>"+query[0].Score+"</p>"+"<p><b>日期:&nbsp</b>"+query[0].Date+"</p>"+"<p><b>其他:&nbsp</b>"+query[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+query[0].week+"</p>");
+      $("#alert-information").modal();
+   }
+  }
+
+} 
+ 
+ 
+ 
 </script>  
 
   
