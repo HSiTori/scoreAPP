@@ -131,7 +131,7 @@ function searchSubDetail(){
 var query;
   if($("input#Chinese:checked").length!=0){
      query = scoreCollection.find({
-       Subject: $("input#Chinese").val()
+       Subject: Chinese
      });
     if(query.length!=0){
         $("#messageButton").text("");
