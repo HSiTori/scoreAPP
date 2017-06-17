@@ -213,6 +213,7 @@ function  searchDateDetail(){
     $("#scorePercenttable tbody").text("");
     for(var i =0;i<sum.length;i++){
       var last = "<tr><td>"+type[i]+"</td><td>"+sum[i]+"</td><td>"+Math.round((sum[i]/totalPrice)*100)+"%</td></tr>"
+      $("#scorePercenttable tbody").append(last);
     }
   }
   
