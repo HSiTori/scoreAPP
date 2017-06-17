@@ -68,7 +68,7 @@
     <input type="radio" name="sub-search" id="Biological" value="Biological">生物
     <input type="radio" name="sub-search" id="Chemistry" value="Chemistry">化學
     <input type="radio" name="sub-search" id="Physical" value="Physical">物理
-    <input type="radio" name="sub-search" id="Earth Science" value="Earth Science">地科
+    <input type="radio" name="sub-search" id="Earth Science" value="EarthScience">地科
   </div>
   <div style="text-align:center; margin-bottom:20px; margin-top:10px;">
     其他科目搜尋:<input name="sub-search" id="other" style="text-align:center;" placeholder="Enter a subject." class="form-control">
@@ -183,9 +183,9 @@ var query;
      });
      $("#messageTop").append("<b>科目:&nbsp</b>生物");
    //地科
-   }else if($("input#Earth Science:checked").length!=0){
+   }else if($("input#EarthScience:checked").length!=0){
     query = scoreCollection.find({
-      Subject: $("input#Earth Science").val()
+      Subject: $("input#EarthScience").val()
      });
     $("#messageTop").append("<b>科目:&nbsp</b>地科");
    }
