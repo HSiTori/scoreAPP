@@ -102,8 +102,24 @@
 </div>
 </div>  
    
-   
-   
+<!--percent-->   
+<div class="col-xs-12" id="scoreSearchlist">
+  <div id="messageTop" style="text-align:center;">
+  </div> 
+  <table id="scoreSearchtable" class="table table-striped" style="">
+    <thead>
+     <tr>
+        <th>科目</th>
+        <th>總分</th>
+        <th>百分比</th>
+     </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div id="messageButton" style="text-align:center;">
+  </div> 
+</div>   
    
    
  </div>
@@ -138,7 +154,7 @@ function  searchDateDetail(){
         $("#scoreSearchtable tbody").text("");
         for(var i=0;i<query.length;i++){
            var num = i+1;
-           var comment = "<tr><td>"+i+"</td><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
+           var comment = "<tr><td>"+num+"</td><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
            $("table#scoreSearchtable tbody").append(comment);
         };
         $("div#scoreSearchlist").show();
