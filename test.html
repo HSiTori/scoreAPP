@@ -126,10 +126,13 @@
  </div>  
 
  <script>
-   
- //搜尋(當月,當週,特定範圍) 
+var sum = [0,0,0,0,0,0,0,0,0,0,0]
+var type = ["國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他"]   
+
+//搜尋(當月,當週,特定範圍) 
  
 function  searchDateDetail(){
+ var totalPrice = 0; 
  var query;
  //當月
   if($("input#thismonth:checked").length!=0){
@@ -156,15 +159,64 @@ function  searchDateDetail(){
            var num = i+1;
            var comment = "<tr><td>"+num+"</td><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
            $("table#scoreSearchtable tbody").append(comment);
+          
+      //計算百分比   
+          switch(query[i].Subject){
+             case "國文":
+               this.sum[0] = this.sum[0] + query[i].Score/1
+               break;
+             case "數學":
+               this.sum[1] = this.sum[1] + query[i].Score/1
+               break;
+             case "英文":
+               this.sum[2] = this.sum[2] + query[i].Score/1
+               break;
+             case "地理":
+               this.sum[3] = this.sum[3] + query[i].Score/1
+               break;
+             case "歷史":
+               this.sum[4] = this.sum[4] + query[i].Score/1
+               break;
+             case "公民":
+               this.sum[5] = this.sum[5] + query[i].Score/1
+               break;
+             case "生物":
+               this.sum[6] = this.sum[6] + query[i].Score/1
+               break;
+             case "化學":
+               this.sum[7] = this.sum[7] + query[i].Score/1
+               break;
+             case "物理":
+               this.sum[8] = this.sum[8] + query[i].Score/1
+               break;
+             case "地科":
+               this.sum[9] = this.sum[9] + query[i].Score/1
+               break;
+             case "其他":
+               this.sum[10] = this.sum[10] + query[i].Score/1
+               break;
+          }
+            totalPrice = totalPrice + query[i].Score/1 
         };
         $("div#scoreSearchlist").show();
         $("#messageButton").append("<b>時間:&nbsp</b>"+year+"-"+month+"-"+"01"+"<b>~</b>"+year+"-"+nextMonth+"-"+"01");
+        lastpercent(totalPrice);
      }else{
         $("#scoretable tbody").text("");
         $("#messageButton").append("<b>無任何資料</b>");
    }
  }
 }
+  
+//算出percent
+  function lastpercent(totalPrice){
+    $("#scorePercenttable tbody").text("");
+    for(var i =0;i<sum.length;i++){
+      var last = "<tr><td>"+type[i]+"</td><td>"+sum[i]+"</td><td>"+Math.round((sum[i]/totalPrice)*100)+"%</td></tr>"
+    }
+  }
+  
+  
   
 //"更多"function
   function moredetails(i){
@@ -189,11 +241,11 @@ function  searchDateDetail(){
       }  
       if(query.length!=0){
       $("p#information").text("");
-      $("p#information").append("<p><b>科目:&nbsp</b>"+query[0].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+query[0].Score+"</p>"+"<p><b>其他:&nbsp</b>"+query[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+query[0].week+"</p>");
+      $("p#information").append("<p><b>科目:&nbsp</b>"+query[i].Subject+"</p>"+"<p><b>分數:&nbsp</b>"+query[i].Score+"</p>"+"<p><b>其他:&nbsp</b>"+query[i].other+"</p>"+"<p><b>曜日:&nbsp</b>"+query[i].week+"</p>");
       $("#alert-information").modal();
     
       }
-      };  
+      };
   
  //依據radio選擇顯示物件
 $("#selectTime-div").hide();
