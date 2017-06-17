@@ -72,10 +72,10 @@
   <table id="scoretable" class="table table-striped" style="">
     <thead>
      <tr>
+        <th>項目</th>
         <th>科目</th>
         <th>分數</th>
         <th>詳細</th>
-        <th>操作</th>
      </tr>
     </thead>
     <tbody>
@@ -135,7 +135,7 @@ function  searchDateDetail(){
         $("#messageButton").text("");
         $("#scoreSearchtable tbody").text("");
         for(var i=0;i<query.length;i++){
-           var comment = "<tr><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
+           var comment = "<tr><td>"+i+"</td><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
            $("table#scoreSearchtable tbody").append(comment);
         };
         $("div#scoreSearchlist").show();
@@ -145,7 +145,8 @@ function  searchDateDetail(){
         $("#messageButton").append("<b>無任何資料</b>");
    }
  }
-}  
+}
+  
 //"更多"function
   function moredetails(i){
     var query; 
