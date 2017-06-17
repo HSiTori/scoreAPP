@@ -134,61 +134,62 @@ var query;
        Subject: $("input#Chinese").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>國文");
+   //數學
    }else if($("input#Math:checked").length!=0){
-//數學
      query = scoreCollection.find({
        Subject: $("input#Math").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>數學");
+   //英文
    }else if($("input#English:checked").length!=0){
-//英文
      query = scoreCollection.find({
        Subject: $("input#English").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>英文");
+   //地理
    }else if($("input#Geography:checked").length!=0){
-//地理
      query = scoreCollection.find({
        Subject: $("input#Geography").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>地理");
+   //歷史
    }else if($("input#History:checked").length!=0){
-//歷史
      query = scoreCollection.find({
        Subject: $("input#History").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>歷史");
+   //公民
    }else if($("input#Civics:checked").length!=0){
-//公民
      query = scoreCollection.find({
        Subject: $("input#Civics").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>公民"); 
+   //物理
    }else if($("input#Physical:checked").length!=0){
-//物理
      query = scoreCollection.find({
        Subject: $("input#Physical").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>物理");
+   //化學
    }else if($("input#Chemistry:checked").length!=0){
-//化學
      query = scoreCollection.find({
        Subject: $("input#Chemistry").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>化學");
+   //生物
    }else if($("input#Biological:checked").length!=0){
-//生物
      query = scoreCollection.find({
        Subject: $("input#Biological").val()
      });
      $("#messageTop").append("<b>科目:&nbsp</b>生物");
+   //地科
    }else if($("input#Earth Science:checked").length!=0){
-//地科   
     query = scoreCollection.find({
       Subject: $("input#Earth Science").val()
      });
     $("#messageTop").append("<b>科目:&nbsp</b>地科");
    }
+   
    if(query.length!=0){
       $("#messageButton").text("");
       $("#subSearchtable tbody").text("");
@@ -196,7 +197,7 @@ var query;
          var num = i+1;
          var comment = "<tr><td>"+num+"</td><td>"+query[i].Score+"</td><td>"+query[i].Date+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td><td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+query[i]._id+"' onclick='changedata("+i+");' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
          $("table#subSearchtable tbody").append(comment);
-     };
+     }
       $("div#select").hide();
       $("div#subSearchlist").show();
       $("#messageTop").text("");
@@ -204,7 +205,7 @@ var query;
       $("table#subSearchtable tbody").text("");
       $("#messageButton").append("<b>無任何資料</b>");
    }
-}
+};
  
 
 //更多
@@ -220,7 +221,7 @@ var query;
       $("#alert-information").modal();
    }
   }
-
+}
  
 //刪除和修改
 function deletescoredetail(i){
