@@ -274,10 +274,60 @@ var query;
 //刪除和修改
 function deletescoredetail(i){
   var query;
+  //國文
+   if($("input#Chinese:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Chinese").val()
+     });
+   //數學
+   }else if($("input#Math:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Math").val()
+     });
+   //英文
+   }else if($("input#English:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#English").val()
+     });
+   //地理
+   }else if($("input#Geography:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Geography").val()
+     });
+   //歷史
+   }else if($("input#History:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#History").val()
+     });
+   //公民
+   }else if($("input#Civics:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Civics").val()
+     });
+   //物理
+   }else if($("input#Physical:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Physical").val()
+     });
+   //化學
+   }else if($("input#Chemistry:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Chemistry").val()
+     });
+   //生物
+   }else if($("input#Biological:checked").length!=0){
+     query = scoreCollection.find({
+       Subject: $("input#Biological").val()
+     });
+   //地科
+   }else if($("input#EarthScience:checked").length!=0){
+    query = scoreCollection.find({
+      Subject: $("input#EarthScience").val()
+     });
+   };
   var r=confirm("確定要刪除嗎?")
   console.log(i);
   if (r==true){
-    console.log(scoreCollection.find()[i]._id);
     scoreCollection.remove({ _id: query[i]._id });
     scoreCollection.save();
     searchSubDetail();
