@@ -183,7 +183,7 @@ var query;
      });
      $("#messageTop").append("<b>科目:&nbsp</b>生物");
    //地科
-   }else if($("input#EarthScience:checked").length!=0){
+   }else{
     query = scoreCollection.find({
       Subject: $("input#EarthScience").val()
      });
