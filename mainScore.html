@@ -277,27 +277,25 @@ function changedata(i){
   
   }
   var r = confirm("再次確認:確定要更新嗎?")
-        if(r){
+     if(r){
           scoreCollection.updateById(editid,editdata);
           scoreCollection.save();
+          start();
            $("select#subject").val("");
            $("input#score-change").val("");
            $("input#date-change").val("");
            $("textarea#other-change").val("");
            $("select#score-id-change").val("");
            $("div#most").hide();
-          $("div#modal-head-right").show();
-          start();
-         
-  }
- }else{
-     $("div#modal-head-wrong").show();
+           $("div#modal-head-right").show();
+          
+     }else{
+           $("div#modal-head-wrong").show();
      //希望可以modal覆蓋在modal上面  
      //$("p#alertresult").text("");
      //$("p#alertresult").append("<b>請輸入必填資料</b>");
      //$("#alert").modal(); 
- 
- }
+     }
  } 
  
 $("#subject").change(function(){
