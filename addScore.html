@@ -57,7 +57,7 @@
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">科目:</label><br>
              <select class="form-control" id="subject">
-               <option value="none">select one:</option>
+               <option>select one:</option>
                <option value="Chinese">國文</option> 
                <option value="Math">數學</option>
                <option value="English">英文</option>
@@ -138,7 +138,13 @@
  
 <script>
 $("div#subject-other-div").text("");
+var type = ["國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
 
+
+//自動選項
+ for(var i =0;i<type.length;i++){
+   $("select#subject").append("<option value="+type[i]+">"+type[i]+"<option>") 
+ }
 //新增分數 
  function addscore(){
   if($("select#subject :selected").val()!=="" && $("select#subject :selected").val()!=="other" && $("input#score").val()!==""){
