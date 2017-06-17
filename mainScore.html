@@ -262,10 +262,10 @@ function changedata(i){
 
  function changescore(i){
   var editid = scoreCollection.find()[i]._id
-  if($("input#subject-change").val()!=="" || $("input#score-change").val()!==""){
+  if($("select#subject :selected").val()!=="" || $("input#score-change").val()!==""){
   var editdata= {
   
-    Subject: $("input#subject-change").val(),
+    Subject: $("select#subject :selected").val(),
     Score: $("input#score-change").val(),
     Date: $("input#date-change").val(),
     other: $("textarea#other-change").val(),
@@ -276,7 +276,7 @@ function changedata(i){
         if(r){
           scoreCollection.updateById(editid,editdata);
           scoreCollection.save();
-           $("input#subject-change").val("");
+           $("select#subject").val("");
            $("input#score-change").val("");
            $("input#date-change").val("");
            $("textarea#other-change").val("");
