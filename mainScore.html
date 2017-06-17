@@ -183,9 +183,11 @@
   </div>
 <script>
 $("div#subject-other-div").text(""); 
+start();
  
  //加入成績資料
-scoreCollection.load(function(){
+function start(){
+ scoreCollection.load(function(){
   var result= scoreCollection.find(
   { },
   { $orderBy: {date:-1},$limit: 10}
@@ -193,7 +195,8 @@ scoreCollection.load(function(){
  
  showscore(result);
  
-});  
+});
+} 
   
 //設定資料顯示格式 
  
@@ -283,7 +286,7 @@ function changedata(i){
            $("select#score-id-change").val("");
            $("div#most").hide();
           $("div#modal-head-right").show();
-          showscore(result);
+          start();
          
   }
  }else{
