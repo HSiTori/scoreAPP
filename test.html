@@ -114,7 +114,7 @@
  //搜尋(當月,當週,特定範圍) 
  
 function  searchDateDetail(){
- var query; 
+ var query;
  //當月
   if($("input#thismonth:checked").length!=0){
     var date = new Date();
@@ -137,6 +137,7 @@ function  searchDateDetail(){
         $("#messageButton").text("");
         $("#scoreSearchtable tbody").text("");
         for(var i=0;i<query.length;i++){
+           var num = i+1;
            var comment = "<tr><td>"+i+"</td><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
            $("table#scoreSearchtable tbody").append(comment);
         };
