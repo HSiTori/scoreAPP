@@ -133,15 +133,15 @@ function  searchDateDetail(){
      });
       if(query.length!=0){
         $("#messageButton").text("");
-        $("#scoreSearchtable tbody").text("");
+        $("#scoretable tbody").text("");
         for(var i=0;i<query.length;i++){
            var comment = "<tr><td>"+i+"</td><td>"+query[i].Subject+"</td><td>"+query[i].Score+"</td><td><a id="+query[i]._id+" class='test' onclick='moredetails("+i+");'>更多</a></td></tr>";
            $("table#scoreSearchtable tbody").append(comment);
         };
-        $("div#scoreSearchlist").show();
+        $("div#scorelist").show();
         $("#messageButton").append("<b>時間:&nbsp</b>"+year+"-"+month+"-"+"01"+"<b>~</b>"+year+"-"+nextMonth+"-"+"01");
      }else{
-        $("#scoreSearchtable tbody").text("");
+        $("#scoretable tbody").text("");
         $("#messageButton").append("<b>無任何資料</b>");
    }
  }
