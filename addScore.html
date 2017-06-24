@@ -63,7 +63,6 @@
           </div>
           <small id="joke" class="form-text text-muted text-danger">*必填</small>  
           </div> 
-          
                     
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">分數:</label><br>
@@ -122,7 +121,8 @@ var type = ["請選擇:","國文","數學","英文","地理","歷史","公民","
 var weekType = ["不選擇","星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
 
 //自動選項
- for(var i =0;i<type.length;i++){
+function auto(){ 
+for(var i =0;i<type.length;i++){
    $("select#subject").append("<option value="+type[i]+">"+type[i]+"</option>")
    console.log(type[i]);
  }
@@ -130,6 +130,7 @@ var weekType = ["不選擇","星期一","星期二","星期三","星期四","星
  for(var i =0;i<weekType.length;i++){
    $("select#week-id").append("<option value="+weekType[i]+">"+weekType[i]+"</option>")
  }
+}
 //新增分數 
  function addscore(){
   if($("select#subject :selected").val()!=="請選擇:" && $("select#subject :selected").val()!=="其他(請自填)" && $("input#score").val()!==""){
@@ -149,6 +150,7 @@ var weekType = ["不選擇","星期一","星期二","星期三","星期四","星
     $("input#date").val("");
     $("input#other").val("");
     $("select#week-id").val("");
+    auto();
     
       $("p#alertresult").text("");
       $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
@@ -172,7 +174,8 @@ var weekType = ["不選擇","星期一","星期二","星期三","星期四","星
     $("input#date").val("");
     $("input#other").val("");
     $("select#week-id").val("");
-    
+    auto(); 
+   
       $("p#alertresult").text("");
       $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
       $("#alert").modal();
