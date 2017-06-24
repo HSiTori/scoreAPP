@@ -215,7 +215,7 @@ function start(){
    function showall(){
        var result= scoreCollection.find(
                    { },
-                   { $orderBy: {date:-1},$limit: 10}
+                   { $orderBy: {date:-1},$limit: 10});
    }; 
    for(var i=0;i<result.length;i++){
        var a = i+1;
