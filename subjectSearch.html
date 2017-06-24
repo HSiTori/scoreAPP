@@ -54,21 +54,7 @@
 
 <!--選擇條件-->
   <div id="select">
-  <div style="text-align:center;">
-    <input type="radio" name="sub-search" id="Chinese" value="Chinese">國文
-    <input type="radio" name="sub-search" id="Math" value="Math">數學
-    <input type="radio" name="sub-search" id="English" value="English">英文
-  </div>
-  <div style="text-align:center;">
-    <input type="radio" name="sub-search" id="Geography" value="Geography">地理
-    <input type="radio" name="sub-search" id="History" value="History">歷史
-    <input type="radio" name="sub-search" id="Civics" value="Civics">公民
-  </div>
-  <div style="text-align:center;">
-    <input type="radio" name="sub-search" id="Biological" value="Biological">生物
-    <input type="radio" name="sub-search" id="Chemistry" value="Chemistry">化學
-    <input type="radio" name="sub-search" id="Physical" value="Physical">物理
-    <input type="radio" name="sub-search" id="Earth Science" value="EarthScience">地科
+  <div style="text-align:center;" id="subject">
   </div>
   <div style="text-align:center; margin-bottom:20px; margin-top:10px;">
     其他科目搜尋:<input name="sub-search" id="other" style="text-align:center;" placeholder="Enter a subject." class="form-control">
@@ -135,18 +121,6 @@
           <div style="text-align:center;">
           <a class="clean" id="first-subject" for="input"></a><br> 
              <select class="form-control" id="subject">
-               <option value="none">select one:</option>
-               <option value="Chinese">國文</option> 
-               <option value="Math">數學</option>
-               <option value="English">英文</option>
-               <option value="Biological">生物</option>
-               <option value="Chemistry">化學</option>
-               <option value="Physical">物理</option>
-               <option value="EarthScience">地科</option>
-               <option value="Geography">地理</option>
-               <option value="History">歷史</option>
-               <option value="Civics">公民</option>
-              <option value="other">其他(請自填):</option>
              </select>
           <div id="subject-other-div" style="text-align:center; margin-bottom:0px; margin-top:5px;">
            <input id="subject-other" type="text" class="form-control" style="text-align:center;" placeholder="Enter a Subject">
@@ -168,15 +142,7 @@
           </div>
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <a class="clean" id="first-week"></a>
-             <select class="form-control" id="score-id-change">
-               <option>select one:</option>
-               <option value="Monday">星期一</option> 
-               <option value="Tuesday">星期二</option>
-               <option value="Wednesday">星期三</option>
-               <option value="Thursday">星期四</option>
-               <option value="Friday">星期五</option>
-               <option value="Saturday">星期六</option>
-               <option value="Sunday">星期日</option>
+             <select class="form-control" id="week-id">
              </select>  
           </div>
         </div>
@@ -198,73 +164,59 @@
   
 <script>  
 $("div#subject-other-div").text("");
+var type = ["國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
+
+//自動選項
+ for(var i =0;i<type.length;i++){
+   $("div#subject").append("<input type='radio' id='sub-search' value='type[i]'>type[i]")
+ } 
  
-//搜尋科目 
+//搜尋科目
 function searchSubDetail(){
-var query;
-//國文
-   if($("input#Chinese:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Chinese").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>國文");
-   //數學
-   }else if($("input#Math:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Math").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>數學");
-   //英文
-   }else if($("input#English:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#English").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>英文");
-   //地理
-   }else if($("input#Geography:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Geography").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>地理");
-   //歷史
-   }else if($("input#History:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#History").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>歷史");
-   //公民
-   }else if($("input#Civics:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Civics").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>公民"); 
-   //物理
-   }else if($("input#Physical:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Physical").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>物理");
-   //化學
-   }else if($("input#Chemistry:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Chemistry").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>化學");
-   //生物
-   }else if($("input#Biological:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Biological").val()
-     });
-     $("#messageTop").append("<b>科目:&nbsp</b>生物");
-   //地科
-   }else if($("input#EarthScience:checked").length!=0){
-    query = scoreCollection.find({
-      Subject: $("input#EarthScience").val()
-     });
-    $("#messageTop").append("<b>科目:&nbsp</b>地科");
-   };
-   
-   if(query.length!=0){
+ var query; 
+ switch(input#sub-search.val){
+             case "國文":
+               query = scoreCollection.find({  Subject: type[0];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[0]")
+               break;
+             case "數學":
+               query = scoreCollection.find({  Subject: type[1];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[1]")
+               break;
+             case "英文":
+               query = scoreCollection.find({  Subject: type[2];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[2]")
+               break;
+             case "地理":
+               query = scoreCollection.find({  Subject: type[3];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[3]")
+               break;
+             case "歷史":
+               query = scoreCollection.find({  Subject: type[4];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[4]")
+               break;
+             case "公民":
+               query = scoreCollection.find({  Subject: type[5];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[5]")
+               break;
+             case "生物":
+               query = scoreCollection.find({  Subject: type[6];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[6]")
+               break;
+             case "化學":
+               query = scoreCollection.find({  Subject: type[7];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[7]")
+               break;
+             case "物理":
+               query = scoreCollection.find({  Subject: type[8];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[8]")
+               break;
+             case "地科":
+               query = scoreCollection.find({  Subject: type[9];  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[9]")
+               break;
+          }
+ if(query.length!=0){
       $("#messageButton").text("");
       $("#subSearchtable tbody").text("");
      for(var i=0;i<query.length;i++){
@@ -280,10 +232,9 @@ var query;
       $("#messageButton").text("");
       $("table#subSearchtable tbody").text("");
       $("#messageButton").append("<b>無任何資料</b>");
-   }
-};
+   }  
+} 
  
-
 //更多
 function moredetails(i){
 var query;
