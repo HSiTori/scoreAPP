@@ -190,22 +190,10 @@ start();
 //} 
  
  
- 
-function start(){
- scoreCollection.load(function(){
-  var result= scoreCollection.find(
-  { },
-  { $orderBy: {date:-1},$limit: 10}
- ); 
- 
- showscore(result);
- 
-});
- console.log("test");
-} 
-  
 //設定資料顯示格式 
- 
+function start(){
+ scoreCollection.load(function(){showscore();});
+ } 
  
  //刪除
  function deletescoredetail(i){
@@ -221,9 +209,14 @@ function start(){
   }
  };  
 
- function showscore(result){
+ function showscore(){
    if(result.length!==0){
    $("#scoretable tbody").text("");
+   function showall(){
+       var result= scoreCollection.find(
+                   { },
+                   { $orderBy: {date:-1},$limit: 10}
+   }; 
    for(var i=0;i<result.length;i++){
        var a = i+1;
        var comment = "<tr><td>"+a+"</td><td>"+result[i].Subject+"</td><td>"+result[i].Score+"</td><td><a id="+result[i]._id+" onclick='moredetail("+i+");'>更多</a></td>"+"<td><input type='button' class='btn btn-info btn-xs' id='changebtn' data-id='"+result[i]._id+"' onclick='changedata("+i+");' value='修改'>&nbsp<input type='button' id="+i+" class='btn btn-danger btn-xs' onclick='deletescoredetail("+i+");' value='刪除'></td></tr>";
@@ -272,7 +265,7 @@ function changedata(i){
 
  function changescore(i){
   var editid = scoreCollection.find()[i]._id
-  if($("select#subject :selected").val()!=="" || $("input#score-change").val()!==""){
+  if($("select#subject :selected").val()!=="請選擇:" || $("input#score-change").val()!==""){
   var editdata= {
   
     Subject: $("select#subject :selected").val(),
@@ -286,7 +279,7 @@ function changedata(i){
      if(r){
           scoreCollection.updateById(editid,editdata);
           scoreCollection.save();
-          start();
+          showscore();
            $("select#subject").val("");
            $("input#score-change").val("");
            $("input#date-change").val("");
@@ -297,10 +290,6 @@ function changedata(i){
           
      }else{
            $("div#modal-head-wrong").show();
-     //希望可以modal覆蓋在modal上面  
-     //$("p#alertresult").text("");
-     //$("p#alertresult").append("<b>請輸入必填資料</b>");
-     //$("#alert").modal(); 
      }
  } 
  }
