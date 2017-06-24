@@ -123,18 +123,6 @@
           <div style="text-align:center;">
           <a class="clean" id="first-subject" for="input"></a><br> 
              <select class="form-control" id="subject">
-               <option value="none">select one:</option>
-               <option value="Chinese">國文</option> 
-               <option value="Math">數學</option>
-               <option value="English">英文</option>
-               <option value="Biological">生物</option>
-               <option value="Chemistry">化學</option>
-               <option value="Physical">物理</option>
-               <option value="EarthScience">地科</option>
-               <option value="Geography">地理</option>
-               <option value="History">歷史</option>
-               <option value="Civics">公民</option>
-              <option value="other">其他(請自填):</option>
              </select>
           <div id="subject-other-div" style="text-align:center; margin-bottom:0px; margin-top:5px;">
            <input id="subject-other" type="text" class="form-control" style="text-align:center;" placeholder="Enter a Subject">
@@ -156,15 +144,7 @@
           </div>
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <a class="clean" id="first-week"></a>
-             <select class="form-control" id="score-id-change">
-               <option>select one:</option>
-               <option value="Monday">星期一</option> 
-               <option value="Tuesday">星期二</option>
-               <option value="Wednesday">星期三</option>
-               <option value="Thursday">星期四</option>
-               <option value="Friday">星期五</option>
-               <option value="Saturday">星期六</option>
-               <option value="Sunday">星期日</option>
+             <select class="form-control" id="week-id">
              </select>  
           </div>
         </div>
@@ -182,6 +162,22 @@
   </div>
   </div>
 <script>
+
+ 
+$("div#subject-other-div").text("");
+var type = ["請選擇:","國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
+var weekType = ["不選擇","星期一","星期二","星期三","星期四","星期五","星期六","星期日"] 
+
+//自動選項
+ for(var i =0;i<type.length;i++){
+   $("select#subject").append("<option value="+type[i]+">"+type[i]+"</option>")
+   console.log(type[i]);
+ }
+ 
+ for(var i =0;i<weekType.length;i++){
+   $("select#week-id").append("<option value="+weekType[i]+">"+weekType[i]+"</option>")
+ }
+
 $("div#subject-other-div").text(""); 
 start();
  
@@ -281,7 +277,7 @@ function changedata(i){
     Score: $("input#score-change").val(),
     Date: $("input#date-change").val(),
     other: $("textarea#other-change").val(),
-    week: $("select#score-id-change :selected").val()
+    week: $("select#week-id :selected").val()
   
   }
   var r = confirm("再次確認:確定要更新嗎?")
@@ -293,7 +289,7 @@ function changedata(i){
            $("input#score-change").val("");
            $("input#date-change").val("");
            $("textarea#other-change").val("");
-           $("select#score-id-change").val("");
+           $("select#week-id").val("");
            $("div#most").hide();
            $("div#modal-head-right").show();
           
