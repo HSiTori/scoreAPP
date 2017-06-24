@@ -133,10 +133,6 @@ var weekType = ["不選填","星期一","星期二","星期三","星期四","星
 //新增分數 
  function addscore(){
   if($("select#subject :selected").val()!=="" && $("select#subject :selected").val()!=="other" && $("input#score").val()!==""){
-  //無選取時改選項
-   //if($("input#date").val() == ""){
-    // $("input#date").val("nodata");
-  //}
    scoreCollection.insert({
   
     Subject: $("select#subject :selected").val(),
@@ -190,6 +186,7 @@ var weekType = ["不選填","星期一","星期二","星期三","星期四","星
  }
  $("table").on("click","button#enter",addscore); 
  
+//change function 
  $("#score").change(function(){
    if($("#score").val()>100){
       $("#score").val("100");
@@ -200,7 +197,7 @@ var weekType = ["不選填","星期一","星期二","星期三","星期四","星
  .change();
  
  $("#subject").change(function(){
-   if($("#subject").val() == "other"){
+   if($("#subject").val() == "其他(請自填)"){
       $("div#subject-other-div").append("<input id='subject-other' type='text' class='form-control' style='text-align:center;' placeholder='Enter a Subject'>");
       $("input#subject-other").text("");
       } 
