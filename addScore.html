@@ -57,7 +57,6 @@
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
           <label for="input">科目:</label><br>
              <select class="form-control" id="subject">
-               <option>select one:</option>
              </select>
           <div id="subject-other-div" style="text-align:center; margin-bottom:0px; margin-top:5px;">
            <input id="subject-other" type="text" class="form-control" style="text-align:center;" placeholder="Enter a Subject">
@@ -83,16 +82,8 @@
           </div>
           
           <div style="text-align:center; margin-bottom:20px; margin-top:20px;">
-          <label>Week:</label>
+          <label>星期:</label>
              <select class="form-control" id="week-id">
-               <option value="none">select one:</option>
-               <option value="Monday">星期一</option> 
-               <option value="Tuesday">星期二</option>
-               <option value="Wednesday">星期三</option>
-               <option value="Thursday">星期四</option>
-               <option value="Friday">星期五</option>
-               <option value="Saturday">星期六</option>
-               <option value="Sunday">星期日</option>
              </select>  
           </div>
       
@@ -127,13 +118,14 @@
  
 <script>
 $("div#subject-other-div").text("");
-var type = ["國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
-
+var type = ["不選填","國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
+var weekType = ["不選填","星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
 
 //自動選項
  for(var i =0;i<type.length;i++){
-   $("select#subject").append("<option value="+type[i]+">"+type[i]+"<option>")
+   $("select#subject").text("<option value="+type[i]+">"+type[i]+"<option>")
    console.log(type[i]);
+   $("select#week-id").text("<option value="+weekType[i]+">"+weekType[i]+"<option>") 
  }
 //新增分數 
  function addscore(){
