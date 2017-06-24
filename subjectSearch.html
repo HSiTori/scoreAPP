@@ -55,7 +55,7 @@
 <!--選擇條件-->
   <div style="text-align:center;" id="select">
           <a id="text">選擇搜尋科目:</a> 
-             <select class="form-control" id="subject">
+             <select class="form-control" id="subject-id">
              </select>
   <div style="text-align:center; margin-bottom:20px; margin-top:10px;">
     其他科目搜尋:<input name="sub-search" id="other" style="text-align:center;" placeholder="Enter a subject." class="form-control">
@@ -168,14 +168,14 @@ var type = ["請選擇:","國文","數學","英文","地理","歷史","公民","
 
 //自動選項
  for(var i =0;i<type.length;i++){
-   $("select#subject").append("<option value="+type[i]+">"+type[i]+"</option>")
+   $("select#subject-id").append("<option value="+type[i]+">"+type[i]+"</option>")
  } 
  
 //搜尋科目
 function searchSubDetail(){
  var query; 
- if($("select#subject :selected").val()!=="請選擇:"){
- switch($("select#subject").val()){
+ if($("select#subject-id :selected").val()!=="請選擇:"){
+ switch($("select#subject-id").val()){
              case "國文":
                query = scoreCollection.find({  Subject: type[1]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[1]")
