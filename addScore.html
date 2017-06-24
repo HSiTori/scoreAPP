@@ -118,8 +118,8 @@
  
 <script>
 $("div#subject-other-div").text("");
-var type = ["國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
-var weekType = ["不選填","星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
+var type = ["請選擇:","國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
+var weekType = ["不選擇","星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
 
 //自動選項
  for(var i =0;i<type.length;i++){
@@ -132,7 +132,7 @@ var weekType = ["不選填","星期一","星期二","星期三","星期四","星
  }
 //新增分數 
  function addscore(){
-  if($("select#subject :selected").val()!=="" && $("select#subject :selected").val()!=="other" && $("input#score").val()!==""){
+  if($("select#subject :selected").val()!=="請選擇:" && $("select#subject :selected").val()!=="其他(請自填)" && $("input#score").val()!==""){
    scoreCollection.insert({
   
     Subject: $("select#subject :selected").val(),
@@ -153,7 +153,7 @@ var weekType = ["不選填","星期一","星期二","星期三","星期四","星
       $("p#alertresult").text("");
       $("p#alertresult").append("<b>"+"輸入成功!!"+"</b>");
       $("#alert").modal();
-  }else if($("select#subject :selected").val()!=="" && $("select#subject :selected").val() =="other" && $("input#score").val()!=="" && $("input#subject-other").val()!==""){
+  }else if($("select#subject :selected").val()!=="請選擇:" && $("select#subject :selected").val() =="其他(請自填)" && $("input#score").val()!=="" && $("input#subject-other").val()!==""){
     
     scoreCollection.insert({
   
