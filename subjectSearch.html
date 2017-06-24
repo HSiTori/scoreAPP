@@ -53,12 +53,13 @@
 </nav>  
 
 <!--選擇條件-->
-  <div id="select">
-  <div style="text-align:center;" id="subject">
-  </div>
+  <div style="text-align:center;" id="select">
+          <br><a class="primary" id="first-subject" for="input">選擇搜尋科目:</a><br> 
+             <select class="form-control" id="subject">
+             </select>
   <div style="text-align:center; margin-bottom:20px; margin-top:10px;">
     其他科目搜尋:<input name="sub-search" id="other" style="text-align:center;" placeholder="Enter a subject." class="form-control">
-  </div>
+  </div> 
   <div style="text-align:center;">
    <button onclick="searchSubDetail();">查詢</button>  
   </div>    
@@ -167,13 +168,13 @@ var type = ["國文","數學","英文","地理","歷史","公民","生物","化�
 
 //自動選項
  for(var i =0;i<type.length;i++){
-   $("div#subject").append("<input type='radio' id='sub-search' value='type[i]'>type[i]")
+   $("select#subject").append("<option value='+type[i]+'>'+type[i]+'</option>")
  } 
  
 //搜尋科目
 function searchSubDetail(){
  var query; 
- switch(input#sub-search.val){
+ switch(select#subject.val){
              case "國文":
                query = scoreCollection.find({  Subject: type[0];  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[0]")
