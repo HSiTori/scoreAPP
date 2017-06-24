@@ -164,7 +164,7 @@
   
   
 <script>  
-var type = ["國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
+var type = ["請選擇:","國文","數學","英文","地理","歷史","公民","生物","化學","物理","地科","其他(請自填)"]
 
 //自動選項
  for(var i =0;i<type.length;i++){
@@ -174,46 +174,47 @@ var type = ["國文","數學","英文","地理","歷史","公民","生物","化�
 //搜尋科目
 function searchSubDetail(){
  var query; 
+ if($("select#subject :selected").val()!=="請選擇:"){
  switch($("select#subject").val()){
              case "國文":
-               query = scoreCollection.find({  Subject: type[0]  });
-               $("#messageTop").append("<b>科目:&nbsp</b>type[0]")
-               break;
-             case "數學":
                query = scoreCollection.find({  Subject: type[1]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[1]")
                break;
-             case "英文":
+             case "數學":
                query = scoreCollection.find({  Subject: type[2]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[2]")
                break;
-             case "地理":
+             case "英文":
                query = scoreCollection.find({  Subject: type[3]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[3]")
                break;
-             case "歷史":
+             case "地理":
                query = scoreCollection.find({  Subject: type[4]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[4]")
                break;
-             case "公民":
+             case "歷史":
                query = scoreCollection.find({  Subject: type[5]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[5]")
                break;
-             case "生物":
+             case "公民":
                query = scoreCollection.find({  Subject: type[6]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[6]")
                break;
-             case "化學":
+             case "生物":
                query = scoreCollection.find({  Subject: type[7]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[7]")
                break;
-             case "物理":
+             case "化學":
                query = scoreCollection.find({  Subject: type[8]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[8]")
                break;
-             case "地科":
+             case "物理":
                query = scoreCollection.find({  Subject: type[9]  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[9]")
+               break;
+             case "地科":
+               query = scoreCollection.find({  Subject: type[10]  });
+               $("#messageTop").append("<b>科目:&nbsp</b>type[10]")
                break;
           }
  if(query.length!=0){
@@ -236,59 +237,11 @@ function searchSubDetail(){
 } 
  
 //更多
-function moredetails(i){
-var query;
-  //國文
-   if($("input#Chinese:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Chinese").val()
+function moredetails(){
+   var moreid = $(this).attr('id')
+   query = scoreCollection.find({
+       _id: moreid
      });
-   //數學
-   }else if($("input#Math:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Math").val()
-     });
-   //英文
-   }else if($("input#English:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#English").val()
-     });
-   //地理
-   }else if($("input#Geography:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Geography").val()
-     });
-   //歷史
-   }else if($("input#History:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#History").val()
-     });
-   //公民
-   }else if($("input#Civics:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Civics").val()
-     });
-   //物理
-   }else if($("input#Physical:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Physical").val()
-     });
-   //化學
-   }else if($("input#Chemistry:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Chemistry").val()
-     });
-   //生物
-   }else if($("input#Biological:checked").length!=0){
-     query = scoreCollection.find({
-       Subject: $("input#Biological").val()
-     });
-   //地科
-   }else if($("input#EarthScience:checked").length!=0){
-    query = scoreCollection.find({
-      Subject: $("input#EarthScience").val()
-     });
-   };
    if(query.length!=0){
       $("p#information").text("");
       $("p#information").append("<p><b>分數:&nbsp</b>"+query[0].Score+"</p>"+"<p><b>日期:&nbsp</b>"+query[0].Date+"</p>"+"<p><b>其他:&nbsp</b>"+query[0].other+"</p>"+"<p><b>曜日:&nbsp</b>"+query[0].week+"</p>");
