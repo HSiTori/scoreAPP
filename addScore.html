@@ -123,9 +123,9 @@ var weekType = ["不選填","星期一","星期二","星期三","星期四","星
 
 //自動選項
  for(var i =0;i<type.length;i++){
-   $("select#subject").text("<option value="+type[i]+">"+type[i]+"<option>")
+   $("select#subject").append("<option value="+type[i]+">"+type[i]+"<option>")
    console.log(type[i]);
-   $("select#week-id").text("<option value="+weekType[i]+">"+weekType[i]+"<option>") 
+   $("select#week-id").append("<option value="+weekType[i]+">"+weekType[i]+"<option>") 
  }
 //新增分數 
  function addscore(){
