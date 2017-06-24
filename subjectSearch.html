@@ -174,7 +174,7 @@ var type = ["國文","數學","英文","地理","歷史","公民","生物","化�
 //搜尋科目
 function searchSubDetail(){
  var query; 
- switch(select#subject.val){
+ switch("select#subject.val()"){
              case "國文":
                query = scoreCollection.find({  Subject: type[0];  });
                $("#messageTop").append("<b>科目:&nbsp</b>type[0]")
