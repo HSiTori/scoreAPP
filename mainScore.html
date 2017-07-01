@@ -289,7 +289,7 @@ function changedata(i){
            $("div#modal-head-right").show();
            auto();
           
-     }else{
+     }else if($("select#subject :selected").val() =="請選擇:" || $("input#score-change").val() ==""){
            $("div#modal-head-wrong").show();
      }
  } 
