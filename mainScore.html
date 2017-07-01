@@ -263,7 +263,7 @@ function changedata(i){
 
  function changescore(i){
   var editid = scoreCollection.find()[i]._id
-  if($("select#subject :selected").val()!=="請選擇:" || $("input#score-change").val()!==""){
+  if($("select#subject :selected").val()!=="請選擇:" && $("input#score-change").val()!==""){
   var editdata= {
   
     Subject: $("select#subject :selected").val(),
