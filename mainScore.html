@@ -170,6 +170,7 @@ var type = ["請選擇:","國文","數學","英文","地理","歷史","公民","
 var weekType = ["不選擇","星期一","星期二","星期三","星期四","星期五","星期六","星期日"] 
 
 //自動選項
+function auto(){ 
  for(var i =0;i<type.length;i++){
    $("select#subject").append("<option value="+type[i]+">"+type[i]+"</option>")
    console.log(type[i]);
@@ -178,9 +179,10 @@ var weekType = ["不選擇","星期一","星期二","星期三","星期四","星
  for(var i =0;i<weekType.length;i++){
    $("select#week-id").append("<option value="+weekType[i]+">"+weekType[i]+"</option>")
  }
-
+}
 $("div#subject-other-div").text(""); 
 start();
+auto();
  
  //加入成績資料
 //function update(){
@@ -278,13 +280,14 @@ function changedata(i){
           scoreCollection.updateById(editid,editdata);
           scoreCollection.save();
           showscore();
-           $("select#subject").val("");
+           $("select#subject").text("");
            $("input#score-change").val("");
            $("input#date-change").val("");
            $("textarea#other-change").val("");
            $("select#week-id").val("");
            $("div#most").hide();
            $("div#modal-head-right").show();
+           auto();
           
      }else{
            $("div#modal-head-wrong").show();
